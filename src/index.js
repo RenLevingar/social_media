@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './Styles/css/style.css';
 import Home from './Pages/Home'
-import Index from './Pages/Index'
+import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import {
   createBrowserRouter,
@@ -12,7 +12,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Index />,
+    element: <Login />,
   },
   {
     path: "/home",

@@ -17,12 +17,13 @@ const MultipleInputs = () => {
             const newPerson = {...person,id:new Date().toString()}
             setpeople([...people, newPerson])
             setperson({email: "", password: ""})
-            console.log("success")
+            window.location.replace('/home');
         }
     }
   return (
     <>
     <article className='form'>
+    <h1>Login</h1>
         <form onSubmit={handleSubmit} className='form'>
             <div className='form-control'>
                 <label htmlFor="email">Email:</label>
@@ -36,17 +37,6 @@ const MultipleInputs = () => {
             <button type='submit' onSubmit={handleSubmit}>login</button>
         </form>
      </article>
-        {/* <article>
-        {people.map((person)=>{
-            const {id,email,password} = person
-            return(
-                <div className='item' key={id}>
-                    <p>{email}</p>
-                    <p>{password}</p>
-                </div>
-            )
-        })}
-    </article> */}
       <Link to={"/signup"}>Dont have an account? Sign Up</Link>
     </>
   )

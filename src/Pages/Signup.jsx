@@ -1,4 +1,3 @@
-import '../App.css';
 import {useState} from 'react'
 import {Link} from 'react-router-dom'
 
@@ -22,17 +21,6 @@ const MultipleInputs = () => {
   return (
     <>
     <article className='form'>
-        {/* <form onSubmit={handleSubmit} className='form'>
-            <div className='form-control'>
-                <label htmlFor="email">email:</label>
-                <input type="email" onChange={handleChange}  name='email' id='email' />
-            </div>
-            <div className='form-control'>
-                <label htmlFor="password">Password:</label>
-                <input type="text" onChange={handleChange}  name='password' id='password' /> 
-            </div>
-            <button type='submit' onSubmit={handleSubmit}>login</button>
-        </form> */}
         <h1>Signup</h1>
         <Link to={"/"}>Back</Link>
      </article>
