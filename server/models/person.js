@@ -22,8 +22,6 @@ const personScheme = new mongoose.Schema({
         type: String,
         required: [true],
         trim: true,
-        maxLength: [10],
-        minLength: [4]
     }
 },{collection:'People'})
 
