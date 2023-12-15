@@ -1,46 +1,66 @@
-import {useState} from 'react'
-import {Link} from 'react-router-dom'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MultipleInputs = () => {
-    const [person, setperson] = useState({email:"", password: ""})
-    const [people, setpeople] = useState([])
+  const [person, setPerson] = useState({ name: "", email: "", age: "", password: "" });
 
-    const handleChange = (e) => {
-        const name = e.target.name
-        const value = e.target.value
-        setperson({...person,[name]:value})
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setPerson({ ...person, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:9000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(person),
+      });
+
+      if (response.ok) {
+        console.log('success');
+        setPerson({ name: "", email: "", age: "", password: "" });
+        window.location.replace('/');
+      } else {
+        console.log('failed');
+      }
+    } catch (error) {
+      console.log(error);
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if(person.password && person.email){
-            const newPerson = {...person,id:new Date().toString()}
-            setpeople([...people, newPerson])
-            setperson({email: "", password: ""})
-        }
-    }
+  };
+
   return (
     <>
-    <article className='form'>
+      <article className='form'>
         <h1>Signup</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label for="name">Name: </label><input name="name" type='text'/><br/>
+            <label htmlFor="name">Name: </label>
+            <input name="name" type='text' value={person.name} onChange={handleChange} /><br />
           </div>
           <div>
-            <label for="email">Email: </label><input name="email" type='text'/><br/>
+            <label htmlFor="email">Email: </label>
+            <input name="email" type='text' value={person.email} onChange={handleChange} /><br />
           </div>
           <div>
-            <label for="age">Age: </label><input name="age" type='text'/><br/>
+            <label htmlFor="age">Age: </label>
+            <input name="age" type='text' value={person.age} onChange={handleChange} /><br />
           </div>
           <div>
-            <label for="password">Password: </label><input name="password" type='text'/><br/>
+            <label htmlFor="password">Password: </label>
+            <input name="password" type='text' value={person.password} onChange={handleChange} /><br />
           </div>
-          <button type='submit' onSubmit={handleSubmit}>login</button>
+          <button type='submit'>Sign Up</button>
         </form>
         <Link to={"/"}>Back</Link>
-     </article>
+      </article>
     </>
-  )
-}
+  );
+};
 
-export default MultipleInputs
+export default MultipleInputs;

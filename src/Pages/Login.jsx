@@ -1,45 +1,68 @@
 import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 
-import {useState} from 'react'
+const Login = () => {
+  const [person, setPerson] = useState({ email: "", password: "" });
+  const [people, setPeople] = useState([]);
+  const [data, setData] = useState([]);
 
-const MultipleInputs = () => {
-    const [person, setperson] = useState({email:"", password: ""})
-    const [people, setpeople] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:9000/users', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-    const handleChange = (e) => {
-        const name = e.target.name
-        const value = e.target.value
-        setperson({...person,[name]:value})
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if(person.password && person.email){
-            const newPerson = {...person,id:new Date().toString()}
-            setpeople([...people, newPerson])
-            setperson({email: "", password: ""})
-            window.location.replace('/home');
+        if (response.ok) {
+          const dataFromServer = await response.json();
+          setData(dataFromServer);
         }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setPerson({ ...person, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (person.password && person.email) {
+      const newPerson = { ...person, id: new Date().toString() };
+      setPeople([...people, newPerson]);
+      setPerson({ email: "", password: "" });
+      window.location.replace('/home');
     }
+  };
+
   return (
     <>
-    <article className='form'>
-    <h1>Login</h1>
+      <article className='form'>
+        <h1>Login</h1>
         <form onSubmit={handleSubmit} className='form'>
-            <div className='form-control'>
-                <label htmlFor="email">Email:</label>
-                <input type="email" onChange={handleChange}  name='email' id='email' />
-            </div>
-            <div className='form-control'>
-                <label htmlFor="password">Password:</label>
-                {/* note that for the password input below it is only temporailry set to type="text", but should be type="password" */}
-                <input type="text" onChange={handleChange}  name='password' id='password' /> 
-            </div>
-            <button type='submit' onSubmit={handleSubmit}>login</button>
+          <div className='form-control'>
+            <label htmlFor="email">Email:</label>
+            <input type="email" onChange={handleChange} name='email' id='email' />
+          </div>
+          <div className='form-control'>
+            <label htmlFor="password">Password:</label>
+            <input type="password" onChange={handleChange} name='password' id='password' />
+          </div>
+          <button type='submit'>Login</button>
         </form>
-     </article>
-      <Link to={"/signup"}>Dont have an account? Sign Up</Link>
+      </article>
+      <Link to={"/signup"}>Don't have an account? Sign Up</Link>
     </>
-  )
+  );
 }
 
-export default MultipleInputs
+export default Login;
