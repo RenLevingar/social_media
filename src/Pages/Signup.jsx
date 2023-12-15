@@ -22,6 +22,21 @@ const MultipleInputs = () => {
     <>
     <article className='form'>
         <h1>Signup</h1>
+        <form>
+          <div>
+            <label for="name">Name: </label><input name="name" type='text'/><br/>
+          </div>
+          <div>
+            <label for="email">Email: </label><input name="email" type='text'/><br/>
+          </div>
+          <div>
+            <label for="age">Age: </label><input name="age" type='text'/><br/>
+          </div>
+          <div>
+            <label for="password">Password: </label><input name="password" type='text'/><br/>
+          </div>
+          <button type='submit' onSubmit={handleSubmit}>login</button>
+        </form>
         <Link to={"/"}>Back</Link>
      </article>
     </>

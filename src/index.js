@@ -4,6 +4,7 @@ import './Styles/css/style.css';
 import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
+import Error from './Pages/Error'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <Signup />,
   },
+  {
+    path: "*",
+    element: <Error />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
