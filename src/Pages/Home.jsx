@@ -1,15 +1,11 @@
-import { Link } from "react-router-dom";
+import Header from "../Components/Navbar"
 
 function Home() {
   return (
     <div className="App">
+      <Header/>
       <header className="App-header">
         <h1>Home</h1>
-        <Link
-          to={"/"}
-        >
-          Back
-        </Link>
       </header>
     </div>
   );

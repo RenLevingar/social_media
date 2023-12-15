@@ -4,6 +4,9 @@ import './Styles/css/style.css';
 import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
+import Profile from './Pages/Profile'
+import AllPosts from './Pages/AllPosts'
+import MyPosts from './Pages/MyPosts';
 import Error from './Pages/Error'
 import {
   createBrowserRouter,
@@ -22,6 +25,18 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "/allposts",
+    element: <AllPosts />,
+  },
+  {
+    path: "/myposts",
+    element: <MyPosts />
   },
   {
     path: "*",
