@@ -18,7 +18,7 @@ const MultipleInputs = () => {
     e.preventDefault();
     try {
       //  Gets all of the users
-      const stuff = await fetch('http://localhost:9000/users', {
+      const users = await fetch('http://localhost:9000/users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -26,15 +26,15 @@ const MultipleInputs = () => {
       });
 
       // If the previous request was successful it pulls all of the emails from the users
-      if (stuff.ok) {
-        const userData = await stuff.json();
+      if (users.ok) {
+        const userData = await users.json();
         var emails = [];
         for(let i=0; i<userData.x.length; i++){
           let nums = Object.values(userData.x[i])
           emails.push(nums[2])
         }
       } else {
-        console.log("Request failed with status:", stuff.status);
+        console.log("request failed");
       }
 
       // Makes sure the current email doens't already exist
@@ -51,7 +51,7 @@ const MultipleInputs = () => {
           window.location.replace('/');
           }
       } else {
-        setErrorMessage(<h3>Error: Duplicate Email</h3>);
+        setErrorMessage(<h6>Error: Email already in use</h6>);
       }
     } catch (error) {
       console.log(error);

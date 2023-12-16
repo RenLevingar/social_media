@@ -22,6 +22,11 @@ const personScheme = new mongoose.Schema({
         type: String,
         required: [true],
         trim: true,
+    },
+    id:{
+        type: Number,
+        required: [true],
+        trim: true,
     }
 },{collection:'People'})
 

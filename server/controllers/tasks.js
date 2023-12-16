@@ -1,11 +1,8 @@
  const PEOPLE = require('../models/person');
 require("dotenv").config();
 
-// People function
-
 // Get function for all people
 const readPeople = async(req,res) => {
-    
     try {
         console.log(PEOPLE)
         await PEOPLE.find({}).then((x) => {res.json({x});});
@@ -18,12 +15,13 @@ const readPeople = async(req,res) => {
 // Post function for creating people
 const createPeople = async(req,res) => {
     try {
+        userId = await PEOPLE.find({});
         const { name } = req.body; 
         const { age } =req.body;
         const { email } = req.body;
         const { password } = req.body;
         console.log(password)
-        await PEOPLE.create({name: name, age: age, email: email, password: password});
+        await PEOPLE.create({name: name, age: age, email: email, password: password, id: userId.length+1});
         let answer = await PEOPLE.find({})
         res.json(answer);
      } catch (error) {
@@ -62,7 +60,6 @@ const deletePeople = async(req,res) => {
     try {
         const { id } = req.params;
         const { task} = req.params;
-        await TASKS.findOneAndUpdate({id: task}, {task: 0});
         await PEOPLE.findOneAndDelete({id: id}); 
         let answer = await PEOPLE.find({});
         res.json(answer);

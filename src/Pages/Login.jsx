@@ -4,29 +4,6 @@ import React, { useState, useEffect } from 'react';
 const Login = () => {
   const [person, setPerson] = useState({ email: "", password: "" });
   const [people, setPeople] = useState([]);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:9000/users', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (response.ok) {
-          const dataFromServer = await response.json();
-          setData(dataFromServer);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -34,13 +11,53 @@ const Login = () => {
     setPerson({ ...person, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (person.password && person.email) {
-      const newPerson = { ...person, id: new Date().toString() };
-      setPeople([...people, newPerson]);
-      setPerson({ email: "", password: "" });
-      window.location.replace('/home');
+      try {
+        //  Gets all of the users
+        const users = await fetch('http://localhost:9000/users', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const userData = await users.json();
+
+        // If the previous request was successful it pulls all of the emails from the users
+        if (users.ok) {
+          var emails = [];
+          for(let i=0; i<userData.x.length; i++){
+            let nums = Object.values(userData.x[i])
+            emails.push(nums[2])
+          }
+        } else {
+          console.log("request failed");
+        }
+
+        // Same thing as above but for passwords
+        if (users.ok) {
+          var passwords = [];
+          for(let i=0; i<userData.x.length; i++){
+            let nums = Object.values(userData.x[i])
+            passwords.push(nums[4])
+          }
+        } else {
+          console.log("request failed");
+        }
+
+        // checks to see if the password and email are correct
+        if(emails.includes(person.email)){
+          
+        }
+      
+        const newPerson = { ...person, id: new Date().toString() };
+        setPeople([...people, newPerson]);
+        setPerson({ email: "", password: "" });
+        window.location.replace('/home');
+      } catch (error) {
+        console.log(error)
+      }
     }
   };
 
