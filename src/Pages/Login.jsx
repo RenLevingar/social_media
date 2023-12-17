@@ -4,6 +4,7 @@ import { useState } from 'react';
 const Login = () => {
   const [person, setPerson] = useState({ email: "", password: "" });
   const [people, setPeople] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -47,15 +48,19 @@ const Login = () => {
         }
 
         // checks to see if the password and email are correct
-        if(emails.includes(person.email) && passwords.includes(person.password)){
+        if(emails.includes(person.email)){
           const indexEmail = emails.findIndex((email) => email === person.email);
-          const indexPassword = passwords.findIndex((password) => password === person.password);
-          if(indexEmail === indexPassword){
+          if(passwords[indexEmail] === person.password){
             const newPerson = { ...person, id: new Date().toString() };
+            localStorage.setItem('loggedInUser', JSON.stringify(userData.x[indexEmail]));
             setPeople([...people, newPerson]);
             setPerson({ email: "", password: "" });
             window.location.replace('/home');
+          } else {
+            setErrorMessage(<h6>Incorrect password</h6>);
           }
+        } else {
+          setErrorMessage(<h6>This user doesn't exist</h6>);
         }
       } catch (error) {
         console.log(error)
@@ -76,6 +81,7 @@ const Login = () => {
             <label htmlFor="password">Password:</label>
             <input type="password" onChange={handleChange} name='password' id='password' />
           </div>
+          {errorMessage}
           <button type='submit'>Login</button>
         </form>
       </article>

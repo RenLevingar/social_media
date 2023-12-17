@@ -1,4 +1,5 @@
 const PEOPLE = require('../models/person');
+const BLOGS = require('../models/blogs')
 require("dotenv").config();
 
 // Get function for all people
@@ -47,7 +48,6 @@ const updatePeople = async(req,res) => {
         }
 
        await PEOPLE.findOneAndUpdate({id: id},{name: name, age:age, task: task});
-       await TASKS.findOneAndUpdate({id: task}, {person: id});
        let answer = await PEOPLE.find({})
        res.json(answer);
     } catch (error) {
@@ -79,4 +79,27 @@ const getPerson = async(req,res) => {
     }
 }
 
-module.exports = {createPeople, readPeople, updatePeople, deletePeople, getPerson}
+// Post function for creating blogs
+const createBlog = async (req, res) => {
+    try {
+      const { title, content, author } = req.body;
+  
+      if (!title || !content) {
+        // If either title or content is missing, send a bad request response
+        return res.status(400).json({ error: 'Both title and content are required' });
+      }
+  
+      // Assuming you have a model named BLOGS for MongoDB
+      await BLOGS.create({ title: title, content: content, author: author});
+  
+      // Fetch all blogs after creating a new one
+      const answer = await BLOGS.find({});
+  
+      res.json({ answer });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+
+module.exports = {createPeople, readPeople, updatePeople, deletePeople, getPerson, createBlog}
