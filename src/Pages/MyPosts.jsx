@@ -9,29 +9,28 @@ const MyPosts = () => {
   const [blogs, setBlogs] = useState([]);
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
+  const fetchBlogs = async () => {
+    try {
+      const blogsData = await fetch('http://localhost:9000/users/blog', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (blogsData.ok) {
+        const blogsOutput = await blogsData.json();
+        let finalBlogs = blogsOutput.x.filter(blog => blog.author === user.name);
+        setBlogs(finalBlogs);
+      } else {
+        console.error('Failed to fetch blogs');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     setUser(loggedInUser);
-
-    const fetchBlogs = async () => {
-      try {
-        const blogsData = await fetch('http://localhost:9000/users/blog', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        if (blogsData.ok) {
-          const blogsOutput = await blogsData.json();
-          let finalBlogs = blogsOutput.x.filter(blog => blog.author === user.name);
-          setBlogs(finalBlogs);
-        } else {
-          console.error('Failed to fetch blogs');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchBlogs();
   }, [user.name]);
 
@@ -53,8 +52,8 @@ const MyPosts = () => {
           },
           body: JSON.stringify(blog),
         });
-
         if (response.ok) {
+          fetchBlogs();
           setBlog({ title: '', content: '', author: user.name, img: '' });
         } else {
           setErrorMessage(<h6>Failed to create blog post</h6>);
@@ -93,7 +92,7 @@ const MyPosts = () => {
       </form>
       <section>
         <h1>Blogs:</h1>
-        <BlogList blogs={blogs} />
+        <BlogList blogs={blogs} fetchBlogs={fetchBlogs}/>
       </section>
     </>
   );

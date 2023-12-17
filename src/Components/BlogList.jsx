@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import EditBlogForm from './EditBlogForm'; // Make sure to provide the correct path
 
-const BlogList = ({ blogs }) => {
+const BlogList = ({ blogs, fetchBlogs }) => {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
   const deleteBlog = async (id) => {
@@ -12,11 +12,15 @@ const BlogList = ({ blogs }) => {
           'Content-Type': 'application/json',
         },
       });
+
       if (!response.ok) {
-        return;
+        console.error('Failed to delete blog');
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      // Regardless of success or failure, fetch updated blogs
+      fetchBlogs();
     }
   };
 
@@ -34,6 +38,9 @@ const BlogList = ({ blogs }) => {
     // and called after saving changes
     console.log('Blog updated:', updatedBlog);
     setSelectedBlog(null); // Exit edit mode
+
+    // Fetch updated blogs
+    fetchBlogs();
   };
 
   return (

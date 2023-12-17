@@ -55,7 +55,7 @@ const Login = () => {
             localStorage.setItem('loggedInUser', JSON.stringify(userData.x[indexEmail]));
             setPeople([...people, newPerson]);
             setPerson({ email: "", password: "" });
-            window.location.replace('/home');
+            window.location.replace('/allposts');
           } else {
             setErrorMessage(<h6>Incorrect password</h6>);
           }
