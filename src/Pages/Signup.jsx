@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { Link } from 'react-router-dom';
+import bcrypt from 'bcryptjs'; 
 
 const MultipleInputs = () => {
   // useStates
@@ -39,12 +40,13 @@ const MultipleInputs = () => {
 
       // Makes sure the current email doens't already exist
       if(!emails.includes(person.email)){
+        const hashedPassword = await bcrypt.hash(person.password, 10);
           const response = await fetch('http://localhost:9000/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(person),
+          body: JSON.stringify({ ...person, password: hashedPassword }),
           });
           if (response.ok) {
           setPerson({ name: "", email: "", age: "", password: "" });

@@ -1,4 +1,4 @@
- const PEOPLE = require('../models/person');
+const PEOPLE = require('../models/person');
 require("dotenv").config();
 
 // Get function for all people

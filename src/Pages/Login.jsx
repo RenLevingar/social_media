@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Login = () => {
   const [person, setPerson] = useState({ email: "", password: "" });
