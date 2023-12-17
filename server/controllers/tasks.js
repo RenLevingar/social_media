@@ -79,10 +79,19 @@ const getPerson = async(req,res) => {
     }
 }
 
+// Get function for all blogs
+const readBlogs = async(req,res) => {
+    try {
+        await BLOGS.find({}).then((x) => {res.json({x});});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // Post function for creating blogs
 const createBlog = async (req, res) => {
     try {
-      const { title, content, author } = req.body;
+      const { title, content, author, img } = req.body;
   
       if (!title || !content) {
         // If either title or content is missing, send a bad request response
@@ -90,7 +99,7 @@ const createBlog = async (req, res) => {
       }
   
       // Assuming you have a model named BLOGS for MongoDB
-      await BLOGS.create({ title: title, content: content, author: author});
+      await BLOGS.create({ title: title, content: content, author: author, img: img});
   
       // Fetch all blogs after creating a new one
       const answer = await BLOGS.find({});
@@ -102,4 +111,16 @@ const createBlog = async (req, res) => {
     }
   };
 
-module.exports = {createPeople, readPeople, updatePeople, deletePeople, getPerson, createBlog}
+//   deletes a blog based off of the title
+  const deleteBlog = async(req,res) => {
+    try {
+        const { id } = req.params;
+        await BLOGS.findOneAndDelete({_id: id}); 
+        let answer = await BLOGS.find({});
+        res.json(answer);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = {createPeople, readPeople, updatePeople, deletePeople, getPerson, readBlogs, createBlog, deleteBlog}

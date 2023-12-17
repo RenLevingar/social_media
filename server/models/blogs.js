@@ -33,6 +33,10 @@ function getCurrentDate() {
       required: [true],
       default: getCurrentDate(),
     },
+    img: {
+      type: String,
+      default: '',
+    }
   }, { collection: 'Blogs' });
 
 module.exports = mongoose.model('Blogs', blogScheme)

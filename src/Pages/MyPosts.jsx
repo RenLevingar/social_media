@@ -1,15 +1,39 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Components/Navbar';
+import BlogList from '../Components/BlogList';
 
 const MyPosts = () => {
   const [user, setUser] = useState({});
-  const [blog, setBlog] = useState({ title: '', content: '', author: '' });
+  const [blog, setBlog] = useState({ title: '', content: '', author: '', img: '' });
   const [errorMessage, setErrorMessage] = useState('');
+  const [blogs, setBlogs] = useState([]);
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
     setUser(loggedInUser);
-  }, []);
+
+    const fetchBlogs = async () => {
+      try {
+        const blogsData = await fetch('http://localhost:9000/users/blog', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (blogsData.ok) {
+          const blogsOutput = await blogsData.json();
+          let finalBlogs = blogsOutput.x.filter(blog => blog.author === user.name);
+          setBlogs(finalBlogs);
+        } else {
+          console.error('Failed to fetch blogs');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchBlogs();
+  }, [user.name]);
 
   // Sets values whenever the inputs are altered
   const handleChange = (e) => {
@@ -29,9 +53,9 @@ const MyPosts = () => {
           },
           body: JSON.stringify(blog),
         });
-  
+
         if (response.ok) {
-          setBlog({ title: '', content: '', author: user.name });
+          setBlog({ title: '', content: '', author: user.name, img: '' });
         } else {
           setErrorMessage(<h6>Failed to create blog post</h6>);
         }
@@ -42,13 +66,13 @@ const MyPosts = () => {
       console.error(error);
     }
   };
-  
 
   return (
     <>
       <Header />
       <h1>MyPosts</h1>
       <form onSubmit={handleSubmit}>
+        <h1>Create a blog:</h1>
         <div>
           <label htmlFor="title">Title: </label>
           <input name="title" type="text" value={blog.title} onChange={handleChange} />
@@ -59,9 +83,18 @@ const MyPosts = () => {
           <input name="content" type="text" value={blog.content} onChange={handleChange} />
           <br />
         </div>
+        <div>
+          <label htmlFor="img">Image(URL): </label>
+          <input name="img" type="text" value={blog.img} onChange={handleChange} />
+          <br />
+        </div>
         <button type="submit">Create</button>
         {errorMessage}
       </form>
+      <section>
+        <h1>Blogs:</h1>
+        <BlogList blogs={blogs} />
+      </section>
     </>
   );
 };
