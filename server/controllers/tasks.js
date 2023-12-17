@@ -123,4 +123,29 @@ const createBlog = async (req, res) => {
     }
 }
 
-module.exports = {createPeople, readPeople, updatePeople, deletePeople, getPerson, readBlogs, createBlog, deleteBlog}
+// Put function for updating blogs
+const updateBlog = async(req,res) => {
+    try {
+        const { id } = req.params;
+        let { title, content, img } = req.body; 
+        let thisBlog = await BLOGS.findOne({_id: id});
+
+        if(!title){
+            title = thisBlog.title;
+        }
+        if(!content){
+            content = thisBlog.content;
+        }
+        if(!img){
+            img = thisBlog.img;
+        }
+
+       await BLOGS.findOneAndUpdate({_id: id},{title: title, content: content, img: img});
+       let answer = await BLOGS.find({})
+       res.json(answer);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = {createPeople, readPeople, updatePeople, deletePeople, getPerson, readBlogs, createBlog, deleteBlog, updateBlog}
