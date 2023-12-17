@@ -47,14 +47,16 @@ const Login = () => {
         }
 
         // checks to see if the password and email are correct
-        if(emails.includes(person.email)){
-          
+        if(emails.includes(person.email) && passwords.includes(person.password)){
+          const indexEmail = emails.findIndex((email) => email === person.email);
+          const indexPassword = passwords.findIndex((password) => password === person.password);
+          if(indexEmail === indexPassword){
+            const newPerson = { ...person, id: new Date().toString() };
+            setPeople([...people, newPerson]);
+            setPerson({ email: "", password: "" });
+            window.location.replace('/home');
+          }
         }
-      
-        const newPerson = { ...person, id: new Date().toString() };
-        setPeople([...people, newPerson]);
-        setPerson({ email: "", password: "" });
-        window.location.replace('/home');
       } catch (error) {
         console.log(error)
       }
