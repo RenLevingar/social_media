@@ -38,6 +38,7 @@ const MyPosts = () => {
     }
     setUser(loggedInUser);
     fetchBlogs();
+     // eslint-disable-next-line
   }, [user.name]);
 
   // Sets values whenever the inputs are altered

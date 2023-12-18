@@ -30,6 +30,7 @@ const Blog = () => {
   // runs the fetch blogs function
   useEffect(() => {
     fetchBlogs();
+     // eslint-disable-next-line
   }, []);
 
   // removes the local storage item

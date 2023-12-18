@@ -12,6 +12,7 @@ const Profile = () => {
       window.location.replace('/')
     }
     setUser(loggedInUser);
+     // eslint-disable-next-line
   }, []);
 
   const signOut = () => {
