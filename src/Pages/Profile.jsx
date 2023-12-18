@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import Header from '../Components/Navbar';
 import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   // gets the user from the saved local storage
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
     if(loggedInUser == null){
-      window.location.replace('/')
+      navigate('/')
     }
     setUser(loggedInUser);
      // eslint-disable-next-line

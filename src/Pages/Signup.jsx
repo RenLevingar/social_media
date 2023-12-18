@@ -1,7 +1,9 @@
 import {useState} from 'react';
+import {useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
 const MultipleInputs = () => {
+  const navigate = useNavigate();
   // useStates
   const [person, setPerson] = useState({ name: "", email: "", age: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
@@ -48,7 +50,7 @@ const MultipleInputs = () => {
           });
           if (response.ok) {
           setPerson({ name: "", email: "", age: "", password: "" });
-          window.location.replace('/');
+          navigate('/');
           }
       } else {
         setErrorMessage(<h6>Error: Email already in use</h6>);

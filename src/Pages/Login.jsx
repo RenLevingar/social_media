@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import '../Styles/css/login.css'
 import  '../Images/appleLogo.png'
 
 const Login = () => {
+  const navigate = useNavigate();
   // localStorage.removeItem('loggedInUser');
   const [person, setPerson] = useState({ email: "", password: "" });
   const [people, setPeople] = useState([]);
@@ -59,7 +61,7 @@ const Login = () => {
             localStorage.setItem('loggedInUser', JSON.stringify(userData.x[indexEmail]));
             setPeople([...people, newPerson]);
             setPerson({ email: "", password: "" });
-            window.location.replace('/allposts');
+            navigate('/allposts')
           } else {
             setErrorMessage(<h6>Incorrect password</h6>);
           }

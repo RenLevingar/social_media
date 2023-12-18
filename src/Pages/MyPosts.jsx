@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Components/Navbar';
 import BlogList from '../Components/BlogList';
+import {useNavigate} from 'react-router-dom'
 
 const MyPosts = () => {
+  const navigate = useNavigate();
   // useStates
   const [user, setUser] = useState({});
   const [blog, setBlog] = useState({ title: '', content: '', author: '', img: '' });
@@ -34,7 +36,7 @@ const MyPosts = () => {
   // use effect that prints all of the blogs
   useEffect(() => {
     if(loggedInUser == null){
-      window.location.replace('/')
+      navigate('/')
     }
     setUser(loggedInUser);
     fetchBlogs();

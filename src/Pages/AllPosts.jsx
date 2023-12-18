@@ -33,7 +33,6 @@ const AllPosts = () => {
   return (
     <>
       <Header/>
-      <h1></h1>
       {/* outputs all of the blogs based off of the BlogList2 component */}
       <BlogList2 blogs={blogs} />
     </>

@@ -20,11 +20,13 @@ const BlogList2 = ({ blogs }) => {
       <div className='blogCard'>
         {blogs.map((blog) => (
           <div key={blog._id}>
-            <Link to={'/blog'} onClick={newPage(blog._id)}>
-            {blog.img && <img src={blog.img} alt="Blog" />}
-            <br />
-            {blog.title}
-            <p>Author: {blog.author}</p>
+            <Link to={'/blog'}>
+              <button onClick={()=>newPage(blog._id)}>
+                {blog.img && <img src={blog.img} alt="Blog" />}
+                <br />
+                {blog.title}
+                <p>Author: {blog.author}</p>
+              </button>
             </Link>
             
           </div>
