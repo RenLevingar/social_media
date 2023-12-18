@@ -62,6 +62,7 @@ const BlogList = ({ blogs, fetchBlogs }) => {
               {blog.img && <img src={blog.img} alt="Blog" />}
               <p>{blog.content}</p>
               <p>Author: {blog.author}</p>
+              <p>Date: {blog.date}</p>
               <button onClick={() => deleteBlog(blog._id)}>Delete</button>
               <button onClick={() => editBlog(blog)}>Edit</button>
             </div>
