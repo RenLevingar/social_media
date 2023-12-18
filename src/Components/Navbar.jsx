@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+// This function creates the navbar taht appears on all of the pages
 const Navbar = () => {
   return (
-    <ul>
-        <li><Link to={"/allposts"}>Home</Link></li>
-        <li><Link to={"/myposts"}>My Posts</Link></li>
-        <li><Link to={"/profile"}>Profile</Link></li>
-    </ul>
+    <header>
+        <h1>Bloget</h1>
+        <Link to={"/allposts"}>Home</Link>
+        <Link to={"/myposts"}>My Posts</Link>
+        <Link to={"/profile"}>Profile</Link>
+    </header>
   )
 }
 

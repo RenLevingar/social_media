@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import EditBlogForm from './EditBlogForm'; // Make sure to provide the correct path
+import EditBlogForm from './EditBlogForm';
 
 const BlogList = ({ blogs, fetchBlogs }) => {
+  // useStates
   const [selectedBlog, setSelectedBlog] = useState(null);
 
+  // Function to delete a specific blog
   const deleteBlog = async (id) => {
     try {
+      // Calls the function to dleete the desired user
       const response = await fetch(`http://localhost:9000/users/blog/${id}`, {
         method: 'DELETE',
         headers: {
@@ -19,27 +22,27 @@ const BlogList = ({ blogs, fetchBlogs }) => {
     } catch (error) {
       console.error(error);
     } finally {
-      // Regardless of success or failure, fetch updated blogs
+      //  Returns all of the blogs with the deleted blog
       fetchBlogs();
     }
   };
 
+  //  Calls the edit blog function
   const editBlog = (blog) => {
     setSelectedBlog(blog);
   };
 
+  //  Cancels the edit if the user chooses to
   const cancelEdit = () => {
+    //Brings the user out of edit mode
     setSelectedBlog(null);
   };
 
+  // Function to begin updating the blog
   const updateBlog = (updatedBlog) => {
-    // Handle the updated blog, e.g., update your state
-    // This function will be passed to the EditBlogForm component
-    // and called after saving changes
-    console.log('Blog updated:', updatedBlog);
-    setSelectedBlog(null); // Exit edit mode
-
-    // Fetch updated blogs
+    //Brings the user out of edit mode
+    setSelectedBlog(null);
+    //  Fetches and returns all of the blogs
     fetchBlogs();
   };
 

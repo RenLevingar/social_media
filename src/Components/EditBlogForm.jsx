@@ -1,8 +1,10 @@
 import {useState} from 'react';
 
 const EditBlogForm = ({ blog, onUpdate, onCancel }) => {
+  // useStates
   const [editedBlog, setEditedBlog] = useState(blog);
 
+  // Resets the input if there are any changes to make sure that only the msot recent version is updated
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedBlog((prevBlog) => ({
@@ -11,8 +13,10 @@ const EditBlogForm = ({ blog, onUpdate, onCancel }) => {
     }));
   };
 
+  // This saves and then sets the changes made by the user for the specfic post
   const saveChanges = async () => {
     try {
+      // calls the function to allow the user to edit the desired function
       const response = await fetch(`http://localhost:9000/users/blog/${editedBlog._id}`, {
         method: 'PUT',
         headers: {

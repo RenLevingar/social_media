@@ -3,12 +3,11 @@ import Header from '../Components/Navbar';
 import BlogList2 from '../Components/BlogList2';
 
 const AllPosts = () => {
-  const [blog, setBlog] = useState({ title: '', content: '', author: '', img: '' });
-  const [errorMessage, setErrorMessage] = useState('');
+  // useStates
   const [blogs, setBlogs] = useState([]);
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
+    // gets all of the blogs
     const fetchBlogs = async () => {
       try {
         const blogsData = await fetch('http://localhost:9000/users/blog', {
@@ -19,9 +18,9 @@ const AllPosts = () => {
         });
         if (blogsData.ok) {
           const blogsOutput = await blogsData.json();
-          setBlogs(blogsOutput.x); // Remove the filter
+          setBlogs(blogsOutput.x);
         } else {
-          console.error('Failed to fetch blogs');
+          console.error('couldnt fetch blogs');
         }
       } catch (error) {
         console.error(error);

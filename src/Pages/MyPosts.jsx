@@ -3,12 +3,14 @@ import Header from '../Components/Navbar';
 import BlogList from '../Components/BlogList';
 
 const MyPosts = () => {
+  // useStates
   const [user, setUser] = useState({});
   const [blog, setBlog] = useState({ title: '', content: '', author: '', img: '' });
   const [errorMessage, setErrorMessage] = useState('');
   const [blogs, setBlogs] = useState([]);
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
+  // creates a function that gets all of the blogs
   const fetchBlogs = async () => {
     try {
       const blogsData = await fetch('http://localhost:9000/users/blog', {
@@ -29,7 +31,11 @@ const MyPosts = () => {
     }
   };
 
+  // use effect that prints all of the blogs
   useEffect(() => {
+    if(loggedInUser == null){
+      window.location.replace('/')
+    }
     setUser(loggedInUser);
     fetchBlogs();
   }, [user.name]);
@@ -45,6 +51,7 @@ const MyPosts = () => {
     e.preventDefault();
     try {
       if (blog.title && blog.content) {
+        // creates a new blog when the info is successfully entered by the user
         const response = await fetch('http://localhost:9000/users/blog', {
           method: 'POST',
           headers: {
