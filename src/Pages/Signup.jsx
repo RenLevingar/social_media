@@ -60,30 +60,65 @@ const MultipleInputs = () => {
 
   return (
     <>
+    <div className='loginContainer'>
+      <div className="loginImg">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/mobile-face-recognition-5650391-4708010.png?f=webp" alt="Login Cartoon" />
+        </div>
+      <div className='loginForm'>
+      
       <article className='form'>
-        <h1>Signup</h1>
+        <h1 className="loginTitle">Register For Your Account</h1>
+        <p className="loginSubTitle">Register To Use Our Site</p>
+        
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Username: </label>
-            <input name="name" type='text' value={person.name} onChange={handleChange} /><br />
+            <br />
+            <input name="name" type='text' value={person.name} onChange={handleChange} className='loginInput' /><br />
           </div>
+          <br />
           <div>
             <label htmlFor="email">Email: </label>
-            <input name="email" type='text' value={person.email} onChange={handleChange} /><br />
+            <br />
+            <input name="email" type='text' value={person.email} onChange={handleChange} className='loginInput' /><br />
           </div>
+          <br />
           <div>
             <label htmlFor="age">Age: </label>
-            <input name="age" type='text' value={person.age} onChange={handleChange} /><br />
+            <br />
+            <input name="age" type='text' value={person.age} onChange={handleChange} className='loginInput' /><br />
           </div>
+          <br />
           <div>
             <label htmlFor="password">Password: </label>
-            <input name="password" type='text' value={person.password} onChange={handleChange} /><br />
+            <br />
+            <input name="password" type='text' value={person.password} onChange={handleChange} className='loginInput' /><br />
           </div>
           {errorMessage}
-          <button type='submit'>Sign Up</button>
+          <br />
+          <button type='submit' className='loginButton'>Sign Up</button>
+          <br />
+          <p className="otherTitle">Or Login With</p>
+              <div className="loginOther">
+                  <div className="appleLogin socialLogin">
+                    <img src="https://pngimg.com/d/apple_logo_PNG19666.png" alt="Apple" />
+                  </div>
+                  <div className="googleLogin socialLogin">
+                    <img src="https://img.freepik.com/freie-ikonen/chrom_318-674221.jpg" alt="Google" />
+                  </div>
+                  <div className="facebookLogin socialLogin">
+                    <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" alt="Facebook" />
+                  </div>
+              </div>
+              <br />
+              <p className="wrongPage">
+                Already Have An Account? <Link to={"/"}><span className="loginRedirect">Login Here</span></Link>
+              </p>
         </form>
-        <Link to={"/"}>Back</Link>
+        
       </article>
+      </div>
+      </div>
     </>
   );
 };

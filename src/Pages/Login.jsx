@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import '../Styles/css/login.css'
+import  '../Images/appleLogo.png'
 
 const Login = () => {
   const [person, setPerson] = useState({ email: "", password: "" });
@@ -73,42 +74,52 @@ const Login = () => {
     <>
       <div className="loginContainer">
         <div className="loginImg">
-          <img src="../Images/login.png" alt="Login Cartoon" />
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-security-7467180-6110966.png?f=webp" alt="Login Cartoon" />
         </div>
         <div className="loginForm">
             <article className='form'>
             <h1 className="loginTitle">Log In To Your Account</h1>
+            <p className="loginSubTitle">Login To Continue Using the Site</p>
 
             <form onSubmit={handleSubmit} className='form'>
               <div className='form-control'>
                 <label htmlFor="email">Email:</label>
-                <br/>
-                <input type="email" onChange={handleChange} name='email' id='email' className="loginInput"/>
-              </div>
                 <br />
+                <input type="email" onChange={handleChange} name='email' id='email' className="loginInput" placeholder="Enter Your Email"/>
+              </div>
+
+              <br />
+
               <div className='form-control'>
                 <label htmlFor="password">Password:</label>
                 <br />
-                <input type="password" onChange={handleChange} name='password' id='password' className="loginInput"/>
+                <input type="password" onChange={handleChange} name='password' id='password' className="loginInput" placeholder="Enter Your Password"/>
               </div>
-              <br />
+
               {errorMessage}
+
+              <br />
+
               <button type='submit' className="loginButton">Login</button>
+
+              <br />
+              <p className="otherTitle">Or Login With</p>
               <div className="loginOther">
                   <div className="appleLogin socialLogin">
-                    <img src="" alt="" />
+                    <img src="https://pngimg.com/d/apple_logo_PNG19666.png" alt="Apple" />
                   </div>
                   <div className="googleLogin socialLogin">
-                    <img src="" alt="" />
+                    <img src="https://img.freepik.com/freie-ikonen/chrom_318-674221.jpg" alt="Google" />
                   </div>
                   <div className="facebookLogin socialLogin">
-                    <img src="" alt="" />
+                    <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" alt="Facebook" />
                   </div>
               </div>
+              <br />
               <p className="wrongPage">
                 Don't have an account? <Link to={"/signup"}><span className="loginRedirect">Register Here</span></Link>
               </p>
-              
+                          
             </form>
           </article>
         </div>
