@@ -1,5 +1,6 @@
 import React from 'react';
 
+// This componet creates the look for all of the blogs on the home page
 const BlogList2 = ({ blogs, onDelete }) => {
   return (
     <ul>

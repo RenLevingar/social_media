@@ -10,8 +10,5 @@ router.get('/blog', readBlogs)
 router.post('/blog', createBlog)
 router.put('/blog/:id', updateBlog);
 router.delete('/blog/:id', deleteBlog);
-// router.get('/:id', getPerson);
-// router.put('/:id', updatePeople);
-// router.delete('/:id', deletePeople);
 
 module.exports = router;
