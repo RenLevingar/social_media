@@ -1,0 +1,59 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "mont";
+}
+
+.loginContainer {
+  display: flex;
+  width: 75vw;
+  height: 75vh;
+  border: 1px solid black;
+}
+.loginContainer .loginImg {
+  background-color: #66A182;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginContainer .loginForm {
+  width: 67%;
+  display: flex;
+  flex-direction: column;
+}
+.loginContainer .loginForm .loginTitle {
+  font-size: 2.5rem;
+}
+.loginContainer .loginForm .loginInput {
+  width: 80%;
+}
+.loginContainer .loginForm .wrongPage {
+  text-align: center;
+}
+.loginContainer .loginForm .wrongPage .loginRedirect {
+  text-decoration: none;
+  color: #1A85C1;
+}
+.loginContainer .loginForm .loginOther {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+.loginContainer .loginForm .loginOther .socialLogin {
+  height: 3rem;
+  width: 5rem;
+  border: 1px solid black;
+}
+
+@font-face {
+  font-family: "mont";
+  src: url("../../Fonts/Montserrat-VariableFont_wght.ttf");
+}
