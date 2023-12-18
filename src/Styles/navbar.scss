@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'mont';
+    src: url('../../Fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.navContainer {
+    font-family: 'mont';
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #19233E;
+
+    .navSection1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 35%;
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-family: 'mont';
+        }
+    }
+
+    .navSection2 {
+        height: 8rem;
+        display: flex;
+        align-items: center;
+        input {
+            outline: none;
+            border-radius: 5px 0 0 5px;
+            height: 25%;
+            color: white;
+            border: 2px solid #7884AE;
+            background-color: rgba($color: #000000, $alpha: 0);
+            margin: 0;
+        }
+
+        .searchBtn {
+            cursor: pointer;
+            border: 2px solid #7884AE;
+            border-radius: 0 5px 5px 0;
+            background-color: #7884AE;
+            color: white;
+            height: 30%;
+            font-family: 'mont';
+            margin: 0;
+            font-size: 100%;
+        }
+    }
+}
