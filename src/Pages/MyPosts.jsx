@@ -79,7 +79,7 @@ const MyPosts = () => {
   return (
     <>
       <Header />
-      <h1>MyPosts</h1>
+      <h1 className='createPostTitle'>My Posts</h1>
       <form onSubmit={handleSubmit}>
         <h1>Create a blog:</h1>
         <div>

@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
 function getCurrentDate() {
-    const today = new Date();
-  
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    const year = today.getFullYear();
-  
-    return `${month}/${day}/${year}`;
-  }
+  const today = new Date();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  const year = today.getFullYear();
 
-  const blogScheme = new mongoose.Schema({
+  return `${month}/${day}/${year}`;
+}
+
+const blogScheme = new mongoose.Schema(
+  {
     title: {
       type: String,
       required: [true, 'Must provide a title'],
@@ -21,7 +21,6 @@ function getCurrentDate() {
       type: String,
       required: [true, 'Must provide content'],
       trim: true,
-      maxLength: [120, 'Content must not exceed 120 characters'],
     },
     author: {
       type: String,
@@ -36,7 +35,9 @@ function getCurrentDate() {
     img: {
       type: String,
       default: '',
-    }
-  }, { collection: 'Blogs' });
+    },
+  },
+  { collection: 'Blogs' }
+);
 
-module.exports = mongoose.model('Blogs', blogScheme)
+module.exports = mongoose.model('Blogs', blogScheme);

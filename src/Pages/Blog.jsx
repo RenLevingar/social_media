@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import Navbar from '../Components/Navbar';
 const Blog = () => {
   // useState
   const [blog, setBlog] = useState({});
@@ -40,6 +40,7 @@ const Blog = () => {
 
   return (
     <>
+      <Navbar/> 
       <h1>{blog.title}</h1>
       {blog.img && <img src={blog.img} alt="Blog" />}
       <h1>{blog.content}</h1>

@@ -25,9 +25,10 @@ body {
   width: 35%;
 }
 .navContainer .navSection1 h1 {
-  font-size: 2.5rem;
+  font-size: 2.65rem;
 }
 .navContainer .navSection1 a {
+  font-size: 1.2rem;
   color: white;
   text-decoration: none;
   font-family: "mont";

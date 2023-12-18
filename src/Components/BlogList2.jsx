@@ -1,38 +1,38 @@
+// Import necessary dependencies
 import { Link } from 'react-router-dom';
+// Import the styles for this component
 import '../Styles/css/allBlogs.css';
-// This componet creates the look for all of the blogs on the home page
+
+// Define the BlogList2 component
 const BlogList2 = ({ blogs }) => {
   
-  const newPage = async(id) => {
-    // const blogsData = await fetch('http://localhost:9000/users/blog', {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
-    // const blogsOutput = await blogsData.json();
-    // let finalBlogs = blogsOutput.x.filter(blog => blog._id === id);
+  // Function to handle opening a new page and storing the blog ID in local storage
+  const newPage = (id) => {
     localStorage.setItem('viewBlog', id);
   }
 
   return (
-    <div className='blogCardContainer'>
-      <div className='blogCard'>
+    <>
+      <h1 className='allBlogTitle'>Check Out What's New!</h1>
+      <div className='blogCardContainer'>
         {blogs.map((blog) => (
-          <div key={blog._id}>
-            <Link to={'/blog'}>
-              <button onClick={()=>newPage(blog._id)}>
-                {blog.img && <img src={blog.img} alt="Blog" />}
-                <br />
-                {blog.title}
-                <p>Author: {blog.author}</p>
+          <div key={blog._id} className='blogCard'>
+            <Link to='/blog'>
+              <button className='allBlogBtn' onClick={() => newPage(blog._id)}>
+                <div className='blogImageContainer'>
+                  {blog.img && <img src={blog.img} alt="Blog" />}
+                </div>
+                <div className='blogInfo'>
+                  <h1>{blog.title}</h1>
+                  <h3>Author: {blog.author}</h3>
+                  <h3>Created: {blog.date}</h3>
+                </div>
               </button>
             </Link>
-            
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
