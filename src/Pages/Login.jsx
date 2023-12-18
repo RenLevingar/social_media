@@ -4,6 +4,7 @@ import '../Styles/css/login.css'
 import  '../Images/appleLogo.png'
 
 const Login = () => {
+  // localStorage.removeItem('loggedInUser');
   const [person, setPerson] = useState({ email: "", password: "" });
   const [people, setPeople] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
@@ -54,6 +55,7 @@ const Login = () => {
           const indexEmail = emails.findIndex((email) => email === person.email);
           if(passwords[indexEmail] === person.password){
             const newPerson = { ...person, id: new Date().toString() };
+            // Sets the logged in user in the local storage so that it can be called back later
             localStorage.setItem('loggedInUser', JSON.stringify(userData.x[indexEmail]));
             setPeople([...people, newPerson]);
             setPerson({ email: "", password: "" });

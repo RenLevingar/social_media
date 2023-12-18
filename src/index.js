@@ -6,6 +6,7 @@ import Signup from './Pages/Signup'
 import Profile from './Pages/Profile'
 import AllPosts from './Pages/AllPosts'
 import MyPosts from './Pages/MyPosts';
+import Blog from './Pages/Blog'
 import Error from './Pages/Error'
 import {
   createBrowserRouter,
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/myposts",
     element: <MyPosts />
+  },
+  {
+    path: "/blog",
+    element: <Blog />
   },
   {
     path: "*",

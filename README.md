@@ -1,3 +1,26 @@
+# Ren Levingar
+
+## Authors
+
+- [@RenLevingar](https://github.com/RenLevingar) - Ren
+
+### Description 
+Blog mplatform to view different people's blogs
+
+### Setup
+Before running the program run the terminal command "npm i" to make sure all dependencies are installed as well as on the server side. This project also utuilizes two mongodb collections, one for users and the other for blogs.
+
+### Initialize
+Use the terminal command "npm run start" to begin the program. This will start both the backend and frontend. Note: make sure you are in the right directory. 
+
+### Utilization 
+Can signin new users and they can each make all of their own blog posts. The titles for these will then be displayed for all other users to see and click on. Once clicked on it will take the user to a new page where blog and all info about it is displayed.
+
+### Implementation
+Render the index.js to create a main that displays the quotes.
+
+# React further below
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
