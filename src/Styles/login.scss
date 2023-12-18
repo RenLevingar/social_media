@@ -5,6 +5,7 @@ body {
 }
 
 .loginContainer {
+    background-color: F0F2EF;
     border-radius: 20px 0 20px 0;
     display: flex;
     width: 80vw;
@@ -14,7 +15,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     .loginImg {
         display: flex;
         width: 33%;
@@ -23,6 +24,9 @@ body {
         background-color: #607BC3;
         align-items: center;
         justify-content: center;
+        img{
+            width: 100%;
+        }
     }
 
     .loginForm {
@@ -63,7 +67,7 @@ body {
         border: none;
         height: 2rem;
         width: 4rem;
-        width: 20%;
+        width: 30%;
         color: white;
         text-align: center;
         margin: auto;
@@ -144,5 +148,64 @@ body {
         .loginImg{
             width: 100%;
         }
+        .loginTitle{
+            font-size: 1.75rem;
+        }
+
+        .loginButton{
+            width: 100%;
+        }
+
+        .otherTitle {
+        text-align: center;
+        position: relative;
+        margin: 20px 0;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            width: 30%;
+            height: 1px;
+            background-color: #000;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
+}
+}
+@media (max-width: 600px) {
+    .loginContainer {
+            flex-direction: column;
+            box-shadow: none;
+    
+            .loginImg {
+                width: 100%;
+            }
+    
+            .loginTitle {
+                font-size: 1rem;
+            }
+    
+            .loginButton {
+                width: 100%;
+            }
+    
+            .otherTitle {
+                text-align: center;
+                position: relative;
+                margin: 20px 0;
+    
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 0%;
+                    height: 1px;
+                    background-color: #000;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
 }

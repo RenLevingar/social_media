@@ -74,25 +74,25 @@ const MultipleInputs = () => {
           <div>
             <label htmlFor="name">Username: </label>
             <br />
-            <input name="name" type='text' value={person.name} onChange={handleChange} className='loginInput' /><br />
+            <input name="name" type='text' value={person.name} onChange={handleChange} className='loginInput' placeholder='Enter Your Username' /><br />
           </div>
           <br />
           <div>
             <label htmlFor="email">Email: </label>
             <br />
-            <input name="email" type='text' value={person.email} onChange={handleChange} className='loginInput' /><br />
+            <input name="email" type='email' value={person.email} onChange={handleChange} className='loginInput' placeholder='Enter Your Email' /><br />
           </div>
           <br />
           <div>
             <label htmlFor="age">Age: </label>
             <br />
-            <input name="age" type='text' value={person.age} onChange={handleChange} className='loginInput' /><br />
+            <input name="age" type='text' value={person.age} onChange={handleChange} className='loginInput' placeholder='Enter Your Age' /><br />
           </div>
           <br />
           <div>
             <label htmlFor="password">Password: </label>
             <br />
-            <input name="password" type='text' value={person.password} onChange={handleChange} className='loginInput' /><br />
+            <input name="password" type='password' value={person.password} onChange={handleChange} className='loginInput' placeholder='Enter Your Password' /><br />
           </div>
           {errorMessage}
           <br />
