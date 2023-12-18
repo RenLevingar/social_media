@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"version":3,"sources":["../../../src/Styles/style.scss","style.css"],"names":[],"mappings":"AAAA;EACI,aAAA;ACCJ","file":"style.css"}
+=======
+{"version":3,"sources":["../../../src/Styles/style.scss","style.css"],"names":[],"mappings":"AAAA;EACI,WAAA;ACCJ","file":"style.css"}
+>>>>>>> parent of a75176d (login started not finished)

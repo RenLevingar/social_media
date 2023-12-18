@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import '../Styles/css/login.css'
 
 const Login = () => {
   // localStorage.removeItem('loggedInUser');
@@ -73,48 +72,22 @@ const Login = () => {
 
   return (
     <>
-      <div className="loginContainer">
-        <div className="loginImg">
-          <img src="../Images/login.png" alt="Login Cartoon" />
-        </div>
-        <div className="loginForm">
-            <article className='form'>
-            <h1 className="loginTitle">Log In To Your Account</h1>
-
-            <form onSubmit={handleSubmit} className='form'>
-              <div className='form-control'>
-                <label htmlFor="email">Email:</label>
-                <br/>
-                <input type="email" onChange={handleChange} name='email' id='email' className="loginInput"/>
-              </div>
-                <br />
-              <div className='form-control'>
-                <label htmlFor="password">Password:</label>
-                <br />
-                <input type="password" onChange={handleChange} name='password' id='password' className="loginInput"/>
-              </div>
-              <br />
-              {errorMessage}
-              <button type='submit' className="loginButton">Login</button>
-              <div className="loginOther">
-                  <div className="appleLogin socialLogin">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="googleLogin socialLogin">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="facebookLogin socialLogin">
-                    <img src="" alt="" />
-                  </div>
-              </div>
-              <p className="wrongPage">
-                Don't have an account? <Link to={"/signup"}><span className="loginRedirect">Register Here</span></Link>
-              </p>
-              
-            </form>
-          </article>
-        </div>
-      </div>
+      <article className='form'>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit} className='form'>
+          <div className='form-control'>
+            <label htmlFor="email">Email:</label>
+            <input type="email" onChange={handleChange} name='email' id='email' />
+          </div>
+          <div className='form-control'>
+            <label htmlFor="password">Password:</label>
+            <input type="password" onChange={handleChange} name='password' id='password' />
+          </div>
+          {errorMessage}
+          <button type='submit'>Login</button>
+        </form>
+      </article>
+      <Link to={"/signup"}>Don't have an account? Sign Up</Link>
     </>
   );
 }
