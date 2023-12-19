@@ -10,7 +10,7 @@ const Navbar = () => {
         <h1>Bloget</h1>
         <Link to={"/allposts"}>Home</Link>
         <Link to={"/myposts"}>My Posts</Link>
-        <Link to={"/profile"}>Profile</Link>
+        <Link to={'/'} className='signOut'>Sign Out</Link>
       </div>
       <div className='navSection2'>
         <input type="text" placeholder='Search Blogs'/>

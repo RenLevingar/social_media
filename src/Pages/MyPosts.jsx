@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Components/Navbar';
 import BlogList from '../Components/BlogList';
 import {useNavigate} from 'react-router-dom'
+import '../Styles/css/allBlogs.css';
 
 const MyPosts = () => {
   const navigate = useNavigate();
@@ -79,29 +80,27 @@ const MyPosts = () => {
   return (
     <>
       <Header />
-      <h1 className='createPostTitle'>My Posts</h1>
-      <form onSubmit={handleSubmit}>
-        <h1>Create a blog:</h1>
-        <div>
-          <label htmlFor="title">Title: </label>
-          <input name="title" type="text" value={blog.title} onChange={handleChange} />
-          <br />
-        </div>
-        <div>
-          <label htmlFor="content">Content: </label>
-          <input name="content" type="text" value={blog.content} onChange={handleChange} />
-          <br />
-        </div>
-        <div>
-          <label htmlFor="img">Image(URL): </label>
-          <input name="img" type="text" value={blog.img} onChange={handleChange} />
-          <br />
-        </div>
-        <button type="submit">Create</button>
-        {errorMessage}
-      </form>
+      <h1 className='createBlogTitle'>Create A New Blog:</h1>
+    <form className="createBlogForm" onSubmit={handleSubmit}>
+  <div>
+    <label htmlFor="title">Title: </label>
+    <input name="title" type="text" value={blog.title} onChange={handleChange} />
+  </div>
+  <div>
+    <label htmlFor="content">Content: </label>
+    <textarea name="content" value={blog.content} onChange={handleChange}></textarea>
+  </div>
+  <div>
+    <label htmlFor="img">Image(URL): </label>
+    <input name="img" type="text" value={blog.img} onChange={handleChange} />
+  </div>
+  <button type="submit">Create</button>
+  <div className="errorMessage">{errorMessage}</div>
+</form>
+
+
       <section>
-        <h1>Blogs:</h1>
+        <h1 className='myBlogTitle'>My Blogs:</h1>
         <BlogList blogs={blogs} fetchBlogs={fetchBlogs}/>
       </section>
     </>

@@ -25,7 +25,6 @@ const Profile = () => {
       <Header />
       <h1>Profile</h1>
       <h2>{user.name}</h2>
-      <Link to={'/'} onClick={signOut}>Sign Out</Link>
     </>
   );
 };

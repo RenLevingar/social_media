@@ -78,3 +78,134 @@ body {
 .blogCardContainer .blogCard .allBlogBtn .blogInfo h3 a {
   text-decoration: none;
 }
+
+@media (max-width: 1200px) {
+  .allBlogTitle {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .blogCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .blogCardContainer .blogCard {
+    width: 40%;
+    margin: 1rem;
+  }
+  .blogCardContainer .blogCard a {
+    text-decoration: none;
+  }
+  .blogCardContainer .blogCard .allBlogBtn {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* Container for the blog image */
+    /* Container for the blog info */
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogImageContainer {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    height: 67%;
+    overflow: hidden;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo {
+    text-decoration: none;
+    width: 100%;
+    height: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-decoration: none;
+    align-items: center;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h1,
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h3 {
+    font-family: "mont";
+    text-align: center;
+    margin: 0;
+    text-decoration: none;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h1 a,
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h3 a {
+    text-decoration: none;
+  }
+}
+@media (max-width: 1200px) {
+  .blogCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .blogCardContainer .blogCard {
+    width: 75%;
+    margin: 1rem;
+  }
+  .blogCardContainer .blogCard a {
+    text-decoration: none;
+  }
+  .blogCardContainer .blogCard .allBlogBtn {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* Container for the blog image */
+    /* Container for the blog info */
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogImageContainer {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    height: 67%;
+    overflow: hidden;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo {
+    text-decoration: none;
+    width: 100%;
+    height: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-decoration: none;
+    align-items: center;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h1,
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h3 {
+    font-family: "mont";
+    text-align: center;
+    margin: 0;
+    text-decoration: none;
+  }
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h1 a,
+  .blogCardContainer .blogCard .allBlogBtn .blogInfo h3 a {
+    text-decoration: none;
+  }
+}

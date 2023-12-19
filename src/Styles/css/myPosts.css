@@ -1,0 +1,248 @@
+/* Define the font 'mont' and its source */
+@font-face {
+  font-family: "mont";
+  src: url("../../Fonts/Montserrat-VariableFont_wght.ttf");
+}
+/* Reset margin and set height for html and body elements */
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: #f0f2ef;
+}
+
+.createNewTitle {
+  margin-right: 2rem;
+  margin-left: 2rem;
+  font-family: "mont";
+  font-size: 2.65rem;
+}
+
+.myPostTitle {
+  margin-right: 2rem;
+  margin-left: 2rem;
+  font-family: "mont";
+  font-size: 2.65rem;
+}
+
+section {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+section .myBlogTitle {
+  font-size: 2.65rem;
+  font-family: "mont";
+}
+
+.createBlogTitle {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 2.65rem;
+  font-family: "mont";
+}
+
+.createBlogForm {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.createBlogForm h1 {
+  font-family: "mont";
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: left; /* Left-align the title */
+}
+.createBlogForm label {
+  font-family: "mont";
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.createBlogForm input,
+.createBlogForm textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-family: "mont";
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.createBlogForm textarea {
+  height: 150px;
+  resize: vertical;
+}
+.createBlogForm button {
+  background-color: #7884ae;
+  color: #fff;
+  font-family: "mont";
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.createBlogForm button:hover {
+  background-color: #5b678e;
+}
+.createBlogForm .errorMessage {
+  color: red;
+  font-family: "mont";
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.blogList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.blogList li {
+  width: 30%;
+  min-height: 40rem;
+  margin: 1rem;
+}
+.blogList li .blogCard {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.blogList li .blogCard img {
+  border-radius: 10px 10px 0 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.blogList li .blogCard .blogImageContainer {
+  width: 100%;
+  height: 10rem;
+  /* Set a fixed height for the image container */
+  overflow: hidden;
+}
+.blogList li .blogCard .blogImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  /* Add border-radius to match the container */
+}
+.blogList li .blogCard h3 {
+  font-family: "mont";
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+}
+.blogList li .blogCard p {
+  font-family: "mont";
+  text-align: center;
+  margin: 0;
+}
+.blogList li .blogCard .buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1rem;
+}
+.blogList li .blogCard .buttonsContainer .editButton,
+.blogList li .blogCard .buttonsContainer .deleteButton {
+  flex: 1;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "mont";
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #7884ae;
+  color: #fff;
+}
+.blogList li .blogCard .buttonsContainer .editButton:hover,
+.blogList li .blogCard .buttonsContainer .deleteButton:hover {
+  background-color: #5b678e;
+}
+
+/* Define the font 'mont' and its source */
+@font-face {
+  font-family: "mont";
+  src: url("../../Fonts/Montserrat-VariableFont_wght.ttf");
+}
+.editForm {
+  width: 80%;
+  margin: 0 auto;
+}
+.editForm label {
+  font-family: "mont";
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.editForm input,
+.editForm textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-family: "mont";
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.editForm textarea {
+  height: 150px;
+  resize: vertical;
+}
+.editForm button {
+  background-color: #7884ae;
+  color: #fff;
+  font-family: "mont";
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 1rem;
+}
+te .editForm button:hover {
+  background-color: #5b678e;
+}
+.editForm button:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.editBtns {
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .blogList li {
+    width: 40%;
+  }
+}
+@media (max-width: 768px) {
+  .blogList li {
+    width: 75%;
+  }
+  section {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  section .myBlogTitle {
+    font-size: 2.65rem;
+    font-family: "mont";
+  }
+}

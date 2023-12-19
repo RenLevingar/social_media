@@ -32,30 +32,18 @@ const EditBlogForm = ({ blog, onUpdate, onCancel }) => {
   };
 
   return (
-    <div>
-      <label>Title:</label>
-      <input
-        type="text"
-        name="title"
-        value={editedBlog.title}
-        onChange={handleInputChange}
-      /><br></br>
-      <label>Content:</label>
-      <textarea
-        name="content"
-        value={editedBlog.content}
-        onChange={handleInputChange}
-      /><br></br>
-      <label>Image URL:</label>
-      <input
-        type="text"
-        name="img"
-        value={editedBlog.img}
-        onChange={handleInputChange}
-      />
-      <button onClick={saveChanges}>Save</button>
-      <button onClick={onCancel}>Cancel</button>
-    </div>
+    <div className="editForm">
+  <label>Title:</label>
+  <input type="text" name="title" value={editedBlog.title} onChange={handleInputChange} /><br />
+  <label>Content:</label>
+  <textarea name="content" value={editedBlog.content} onChange={handleInputChange} /><br />
+  <label>Image URL:</label>
+  <input type="text" name="img" value={editedBlog.img} onChange={handleInputChange} />
+  <div className='editBtns'>
+    <button onClick={saveChanges}>Save</button>
+    <button onClick={onCancel}>Cancel</button>
+  </div>
+</div>
   );
 };
 

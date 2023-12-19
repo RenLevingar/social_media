@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Components/Navbar';
 import BlogList2 from '../Components/BlogList2';
-
 const AllPosts = () => {
   // useStates
   const [blogs, setBlogs] = useState([]);
