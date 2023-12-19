@@ -22,7 +22,7 @@ const Login = () => {
     if (person.password && person.email) {
       try {
         //  Gets all of the users
-        const users = await fetch('http://localhost:9000/users', {
+        const users = await fetch('https://main--unrivaled-dusk-f57e8e.netlify.app/users', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

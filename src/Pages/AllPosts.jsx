@@ -9,7 +9,7 @@ const AllPosts = () => {
     // gets all of the blogs
     const fetchBlogs = async () => {
       try {
-        const blogsData = await fetch('http://localhost:9000/users/blog', {
+        const blogsData = await fetch('https://main--unrivaled-dusk-f57e8e.netlify.app/users/blog', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

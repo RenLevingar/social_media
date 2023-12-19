@@ -20,7 +20,7 @@ const MultipleInputs = () => {
     e.preventDefault();
     try {
       //  Gets all of the users
-      const users = await fetch('http://localhost:9000/users', {
+      const users = await fetch('https://main--unrivaled-dusk-f57e8e.netlify.app/users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const MultipleInputs = () => {
 
       // Makes sure the current email doens't already exist
       if(!emails.includes(person.email)){
-          const response = await fetch('http://localhost:9000/users', {
+          const response = await fetch('https://main--unrivaled-dusk-f57e8e.netlify.app/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
