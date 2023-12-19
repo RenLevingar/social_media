@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
+import '../Styles/css/blog.css'
 const Blog = () => {
   // useState
   const [blog, setBlog] = useState({});
@@ -41,12 +42,13 @@ const Blog = () => {
   return (
     <>
       <Navbar/> 
-      <h1>{blog.title}</h1>
-      {blog.img && <img src={blog.img} alt="Blog" />}
-      <h1>{blog.content}</h1>
-      <h1>{blog.author}</h1>
-      <h1>{blog.date}</h1>
-      <Link to="/allposts" onClick={removeLocal}>Go back to Home</Link>
+      <div className="blogDetails">
+  <h1>{blog.title}</h1>
+  <p>Author: {blog.author}</p>
+  <time>Last Updated: {blog.date}</time>
+  {blog.img && <img src={blog.img} alt="Blog" />}
+  <p>{blog.content}</p>
+</div>
     </>
   );
 };
