@@ -12,7 +12,7 @@ const Blog = () => {
   // gets all the blogs and sets the blog to the correct one
   const fetchBlogs = async () => {
     try {
-      const blogsData = await fetch('https://main--unrivaled-dusk-f57e8e.netlify.app/users/blog', {
+      const blogsData = await fetch('http://localhost:9000/users/blog', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
